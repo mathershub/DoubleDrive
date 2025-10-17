@@ -1,9 +1,14 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Double Drive — Full Build</title>
+  <meta charset="utf-8" />
+  <title>DoubleDrive Multiplayer</title>
+</head>
+<body>
+  <canvas id="game" width="800" height="600"></canvas>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client-net.js"></script>
+  <!-- your other game scripts should follow so they can use localPlayer, drawPlayer, etc. -->
 <style>
   html,body{height:100%;margin:0;background:#071321;color:#fff;font-family:Inter,Arial,sans-serif;}
   #wrap{display:flex;align-items:center;justify-content:center;height:100%;width:100%;padding:12px;box-sizing:border-box;}
@@ -63,7 +68,7 @@ const CONFIG = {
   blockWindowMs:400,
   reboundPickupRange:44,
   dunkRange:60,
-  meterFillMs: 500 // faster meter: 0.5s fill
+  meterFillMs: 200 // faster meter: 0.5s fill
 };
 
 /* ===== Canvas ===== */
