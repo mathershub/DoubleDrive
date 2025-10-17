@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>DoubleDrive Multiplayer</title>
-</head>
-<body>
-  <canvas id="game" width="800" height="600"></canvas>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="client-net.js"></script>
-  <!-- your other game scripts should follow so they can use localPlayer, drawPlayer, etc. -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Double Drive — Full Build</title>
 <style>
   html,body{height:100%;margin:0;background:#071321;color:#fff;font-family:Inter,Arial,sans-serif;}
   #wrap{display:flex;align-items:center;justify-content:center;height:100%;width:100%;padding:12px;box-sizing:border-box;}
@@ -93,9 +88,9 @@ let scoreP1 = 0, scoreP2 = 0;
 /* ===== Characters ===== */
 const CHAR_DEFS = [
   {id:'mathers', name:'Mathers', color:'#ff6b6b', speed:1.1, shoot:1.1, steal:0.12},
-  {id:'sam',     name:'Sam',     color:'#68c2ff', speed:0.9, shoot:1.4, steal:0.10},
-  {id:'reven',    name:'Reven',    color:'#7be36b', speed:0.4, shoot:1.0, steal:0.40},
-  {id:'gavin',   name:'Gavin',   color:'#ffd86b', speed:1.9, shoot:0.8, steal:0.09}
+  {id:'sam',     name:'Sam',     color:'#68c2ff', speed:0.9, shoot:1.2, steal:0.16},
+  {id:'reven',    name:'Reven',    color:'#7be36b', speed:0.75, shoot:1.0, steal:0.20},
+  {id:'gavin',   name:'Gavin',   color:'#ffd86b', speed:1.5, shoot:0.8, steal:0.09}
 ];
 let selP1 = 0, selP2 = 1, confirmedP1=false, confirmedP2=false;
 
@@ -271,7 +266,7 @@ function handleShootPress(id){
     player.meterActive = true; player.meterVal = 0; player.meterDir = 1; player.meterHeldAt = now(); player.meterAutoReleased = false;
   } else {
     player.armsState = 'block'; player.lastBlockAt = now(); player.armsTimer = CONFIG.blockWindowMs;
-  } 
+  }
 }
 function handleShootRelease(id){
   const player = id === 'p1' ? p1 : p2;
